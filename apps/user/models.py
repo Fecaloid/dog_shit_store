@@ -1,4 +1,3 @@
-from django.db import models
 from  django.contrib.auth.models import AbstractUser
 from django.utils.safestring import mark_safe
 from phonenumber_field.modelfields import PhoneNumberField
