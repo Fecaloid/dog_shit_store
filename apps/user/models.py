@@ -5,6 +5,7 @@ from imagekit.models import ProcessedImageField, ImageSpecField
 from pilkit.processors import ResizeToFill
 
 from config.settings import MEDIA_ROOT
+from django.db import models
 
 
 class User(AbstractUser):
@@ -19,6 +20,7 @@ class User(AbstractUser):
         source='image',
         processors=[ResizeToFill(200, 200)]
     )
+    about = models.TextField(verbose_name='О себе', null=True, blank=True)
 
     def image_tag_thumbnail(self):
         if self.image:
