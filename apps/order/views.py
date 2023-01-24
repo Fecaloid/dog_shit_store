@@ -15,7 +15,7 @@ def get_cart_data(user):
 
 
 @login_required
-def add_to_cart(request):
+def add_to_cart_view(request):
     data = request.GET.copy()
     data.update(user=request.user)
     request.GET = data
@@ -35,3 +35,9 @@ def add_to_cart(request):
             {"product": cd['product'], "cart": get_cart_data(cd['user'])}
         )
 
+
+@login_required
+def cart_view(request):
+    cart = get_cart_data(request.user)
+    breadcrumbs = {'current': "Корзина"}
+    return render(request, 'order/cart.html', {'cart': cart, 'breadcrumbs': breadcrumbs})
